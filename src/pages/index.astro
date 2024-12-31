@@ -1,11 +1,53 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Projects from "../components/Projects.astro";
+import BlogPosts from "../components/BlogPosts.astro";
+import { sortByDate } from "../date";
+
+const allProjects = await getCollection("projects");
+const allPosts = await getCollection("posts");
+const publicPosts = allPosts.filter((post) => !post.data.draft);
+const publicProjects = allProjects.filter((project) => !project.data.draft);
+const allPostsByDate = sortByDate(publicPosts).slice(0, 10);
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={"Home"}>
+    <section class="flex flex-col gap-2">
+        <h1 class="section-title">About me</h1>
+        <p>
+            Hey, I'm Jake a cybersecurity student and founder of Valink
+            Solutions Ltd. based in Ontario, providing consulting, development,
+            and graphic design services. While working on my bachelor's in
+            cybersecurity, I'm building towards a future where I can help teach
+            digital security across Canadian communities.
+        </p>
+        <p>
+            I started with Python but have since moved to systems and backend
+            development using Rust, focusing on creating secure, practical
+            solutions. Through Valink Solutions and my open-source
+            contributions, I try to make technology more accessible to everyone.
+            My experiences with ADHD and ASD have shaped how I approach problems
+            and reinforced my belief in building inclusive technical solutions.
+        </p>
+        <p>
+            When I'm not studying or working on client projects, you'll find me
+            contributing to open-source projects, gaming, or planning future
+            educational initiatives. I'm passionate about sharing knowledge and
+            making the digital world a bit safer for everyone.
+        </p>
+    </section>
+
+    <section class="flex flex-col gap-2">
+        <h1 class="section-title">Projects</h1>
+        <Projects projects={publicProjects} />
+    </section>
+
+    <section class="flex flex-col gap-2">
+        <h1 class="section-title">Blog Posts</h1>
+        <BlogPosts posts={allPostsByDate} />
+    </section>
 </Layout>
