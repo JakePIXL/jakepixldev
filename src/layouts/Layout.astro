@@ -29,6 +29,7 @@ const fullTitle = `JakePIXL - ${title}`;
     <meta name="msapplication-TileColor" content="#2d89ef" />
     <meta name="theme-color" content="#f8feff" />
     <meta name="generator" content={Astro.generator} />
+    <link href={import.meta.env.FONT_URL} rel="stylesheet" />
     <title>{fullTitle}</title>
 
     <meta name="title" content={fullTitle} />
@@ -138,14 +139,6 @@ const fullTitle = `JakePIXL - ${title}`;
 </html>
 
 <style>
-  @font-face {
-    font-family: "TX-02";
-    src: url("/fonts/TX-02-Variable.woff2") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
   html,
   body {
     @apply bg-slate-100 text-slate-900;
