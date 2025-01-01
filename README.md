@@ -1,48 +1,78 @@
-# Astro Starter Kit: Basics
+# JakePIXL.dev
 
-```sh
-npm create astro@latest -- --template basics
+My personal website and blog built with Astro, featuring a minimal burtalism inspired design focused on content and readability. Visit it at [jakepixl.dev](https://jakepixl.dev).
+
+## What's Inside
+
+- Personal blog posts about cybersecurity, Rust development, and technology
+- Project showcase highlighting my work like ChunkVault
+- Responsive design with a custom brutalist aesthetic
+- RSS feed for blog posts
+- Open Graph image generation for social sharing
+
+## Local Development
+
+First, install dependencies using pnpm:
+
+```bash
+pnpm install
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Then start the development server:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+pnpm dev
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+The site will be available at http://localhost:4321
 
-## 🧞 Commands
+## Technology Stack
 
-All commands are run from the root of the project, from a terminal:
+- [Astro](https://astro.build) - Static site generator
+- [TailwindCSS](https://tailwindcss.com) - Styling
+- [Prettier](https://prettier.io) - Code formatting
+- Custom icons
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Fonts
 
-## 👀 Want to learn more?
+This project uses Berkeley Mono as its primary font, which requires a personal license. I have purchased a personal license for this font, but if you fork this project you'll need to either:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Purchase your own Berkeley Mono license
+2. Replace it with another monospace font
+
+Note: The font files are not included in this repository due to licensing restrictions.
+
+## Build & Deploy
+
+Build the production site:
+
+```bash
+pnpm build
+```
+
+Preview the built site locally:
+
+```bash
+pnpm preview
+```
+
+## Project Structure
+
+- `src/content/` - Blog posts and project data 
+- `src/components/` - Reusable Astro components
+- `src/layouts/` - Page layouts
+- `src/pages/` - Site pages and routing
+- `src/assets/` - Static assets and styles
+- `public/` - Public files like fonts and images
+
+## Contributing
+
+While this is my personal site, I welcome bug reports and suggestions! Feel free to:
+
+1. Create an issue for bugs or feature ideas
+2. Submit a pull request with improvements
+3. Share feedback on the design and content
+
+## License
+
+MIT License - Feel free to use any code from this site for your own projects, just please don't copy the content or design wholesale.
