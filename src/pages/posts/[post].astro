@@ -4,16 +4,16 @@ import { CollectionEntry, getCollection } from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-    const posts: CollectionEntry<"posts">[] = await getCollection("posts");
-    const params = posts.map((post) => ({
-        params: { post: post.slug },
-        props: { post },
-    }));
-    return params;
+  const posts: CollectionEntry<"posts">[] = await getCollection("posts");
+  const params = posts.map((post) => ({
+    params: { post: post.slug },
+    props: { post },
+  }));
+  return params;
 }
 
 interface Props {
-    post: CollectionEntry<"posts">;
+  post: CollectionEntry<"posts">;
 }
 
 const { post } = Astro.props;
@@ -22,7 +22,7 @@ const { Content } = await post.render();
 ---
 
 <PostLayout post={post}>
-    <main>
-        <Content />
-    </main>
+  <main>
+    <Content />
+  </main>
 </PostLayout>

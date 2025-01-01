@@ -16,38 +16,38 @@ const allPostsByDate = sortByDate(publicPosts).slice(0, 10);
 ---
 
 <Layout title={"Home"}>
-    <section class="flex flex-col gap-2">
-        <h1 class="section-title">About me</h1>
-        <p>
-            Hey, I'm Jake a cybersecurity student and founder of Valink
-            Solutions Ltd. based in Ontario, providing consulting, development,
-            and graphic design services. While working on my bachelor's in
-            cybersecurity, I'm building towards a future where I can help teach
-            digital security across Canadian communities.
-        </p>
-        <p>
-            I started with Python but have since moved to systems and backend
-            development using Rust, focusing on creating secure, practical
-            solutions. Through Valink Solutions and my open-source
-            contributions, I try to make technology more accessible to everyone.
-            My experiences with ADHD and ASD have shaped how I approach problems
-            and reinforced my belief in building inclusive technical solutions.
-        </p>
-        <p>
-            When I'm not studying or working on client projects, you'll find me
-            contributing to open-source projects, gaming, or planning future
-            educational initiatives. I'm passionate about sharing knowledge and
-            making the digital world a bit safer for everyone.
-        </p>
-    </section>
+  <section class="flex flex-col gap-2">
+    <h1 class="section-title">About me</h1>
+    <p>
+      Hey, I'm Jake a cybersecurity student and founder of Valink Solutions Ltd.
+      based in Ontario, providing consulting, development, and graphic design
+      services. While working on my bachelor's in cybersecurity, I'm building
+      towards a future where I can help teach digital security across Canadian
+      communities.
+    </p>
+    <p>
+      I started with Python but have since moved to systems and backend
+      development using Rust, focusing on creating secure, practical solutions.
+      Through Valink Solutions and my open-source contributions, I try to make
+      technology more accessible to everyone. My experiences with ADHD and ASD
+      have shaped how I approach problems and reinforced my belief in building
+      inclusive technical solutions.
+    </p>
+    <p>
+      When I'm not studying or working on client projects, you'll find me
+      contributing to open-source projects, gaming, or planning future
+      educational initiatives. I'm passionate about sharing knowledge and making
+      the digital world a bit safer for everyone.
+    </p>
+  </section>
 
-    <section class="flex flex-col gap-2">
-        <h1 class="section-title">Projects</h1>
-        <Projects projects={publicProjects} />
-    </section>
+  <section class="flex flex-col gap-2">
+    <h1 class="section-title">Projects</h1>
+    <Projects projects={publicProjects} />
+  </section>
 
-    <section class="flex flex-col gap-2">
-        <h1 class="section-title">Blog Posts</h1>
-        <BlogPosts posts={allPostsByDate} />
-    </section>
+  <section class="flex flex-col gap-2">
+    <h1 class="section-title">Blog Posts</h1>
+    <BlogPosts posts={allPostsByDate} />
+  </section>
 </Layout>

@@ -4,53 +4,53 @@ import Layout from "./Layout.astro";
 import { formatDate } from "../date";
 
 interface Props {
-    post: CollectionEntry<"posts">;
+  post: CollectionEntry<"posts">;
 }
 
 const { post } = Astro.props;
 const {
-    data: { title, tags, description, publishDate } = {
-        title: "",
-        tags: [],
-        description: "",
-        publishDate: "",
-    },
-    slug,
+  data: { title, tags, description, publishDate } = {
+    title: "",
+    tags: [],
+    description: "",
+    publishDate: "",
+  },
+  slug,
 } = post || {};
 
 const date = new Date(publishDate);
 const datetime = date.toISOString();
 const postDate = formatDate(date);
-const imgUrl = new URL(`/og-image/${slug}.png`, Astro.url).href;
+const imgUrl = new URL(`/open-graph/${slug}.png`, Astro.url).href;
 const { headings, remarkPluginFrontmatter } = await post.render();
 ---
 
 <Layout
-    title={title}
-    ogImage={imgUrl}
-    description={description}
-    articleDate={postDate}
+  title={title}
+  ogImage={imgUrl}
+  description={description}
+  articleDate={postDate}
 >
-    <main class="h-full min-w-full flex-grow space-y-6">
-        <div class="mb-0 border-b border-slate-900 pb-4">
-            <h1 class="text-2xl font-semibold tracking-wide">
-                {title}
-            </h1>
-        </div>
-        <div
-            class="flex w-full flex-col items-center justify-between gap-4 md:flex-row"
+  <main class="h-full min-w-full flex-grow space-y-6">
+    <div class="mb-0 border-b border-slate-900 pb-4">
+      <h1 class="text-2xl font-semibold tracking-wide">
+        {title}
+      </h1>
+    </div>
+    <div
+      class="flex w-full flex-col items-center justify-between gap-4 md:flex-row"
+    >
+      <div class="flex flex-row items-center gap-4">
+        <time
+          datetime={datetime}
+          class="whitespace-nowrap text-sm text-gray-600 md:text-base"
+          >{postDate}</time
         >
-            <div class="flex flex-row items-center gap-4">
-                <time
-                    datetime={datetime}
-                    class="whitespace-nowrap text-sm text-gray-600 md:text-base"
-                    >{postDate}</time
-                >
-                <span class="whitespace-nowrap opacity-40">
-                    {remarkPluginFrontmatter.minutesRead}
-                </span>
-            </div>
-            <!-- <ul
+        <span class="whitespace-nowrap opacity-40">
+          {remarkPluginFrontmatter.minutesRead}
+        </span>
+      </div>
+      <!-- <ul
                 class="grid grid-cols-3 max-w-[450px] gap-1 pb-4 md:gap-2 place-items-end"
             >
                 {
@@ -61,44 +61,42 @@ const { headings, remarkPluginFrontmatter } = await post.render();
                     ))
                 }
             </ul> -->
-            <ul class="tag-container">
-                {
-                    tags.map((tag: string) => (
-                        <li class="label label-sm tag-item">{tag}</li>
-                    ))
-                }
-            </ul>
-        </div>
+      <ul class="tag-container">
+        {
+          tags.map((tag: string) => (
+            <li class="label label-sm tag-item">{tag}</li>
+          ))
+        }
+      </ul>
+    </div>
 
-        <div
-            class="min-w-full marker:text-slate-900 prose prose-h2:border-b prose-h2:border-slate-900 prose-ul:pl-11 prose-ol:pl-12 prose-img:border prose-a:underline prose-a:underline-blue-500 prose-a:visited:underline-blue-700"
-        >
-            <slot />
-        </div>
-    </main>
+    <div
+      class="prose-a:underline-blue-500 prose-a:visited:underline-blue-700 prose min-w-full marker:text-slate-900 prose-h2:border-b prose-h2:border-slate-900 prose-a:underline prose-ol:pl-12 prose-ul:pl-11 prose-img:border"
+    >
+      <slot />
+    </div>
+  </main>
 </Layout>
 
 <style>
-    .tag-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        max-width: fit-content;
-        margin-left: auto;
-    }
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 300px;
+    margin-left: auto;
+    gap: 0.5rem;
+  }
 
-    /* First row is 3 items */
-    .tag-item:nth-child(-n + 3) {
-        order: 1;
-    }
+  .tag-item:nth-child(-n + 3) {
+    order: 1;
+  }
 
-    /* Second row is 1 item */
-    .tag-item:nth-child(4) {
-        order: 2;
-    }
+  .tag-item:nth-child(4) {
+    order: 2;
+  }
 
-    /* Third row is last item */
-    .tag-item:nth-child(5) {
-        order: 3;
-    }
+  .tag-item:nth-child(5) {
+    order: 3;
+  }
 </style>

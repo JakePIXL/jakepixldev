@@ -2,7 +2,14 @@
 title: "Mental Health Service Inadequacy amongst Indigenous Communities in Canada"
 publishDate: "November 26 2024"
 description: "An in-depth Op/Ed exploration of the mental health crisis facing Indigenous communities in Canada, examining the impact of intergenerational trauma and proposing comprehensive solutions for reform."
-tags: ["mental-health", "indigenous-rights", "healthcare", "canada", "social-justice"]
+tags:
+  [
+    "mental-health",
+    "indigenous-rights",
+    "healthcare",
+    "canada",
+    "social-justice",
+  ]
 ---
 
 Being the grandson of a residential school survivor, I know firsthand how intergenerational trauma can haunt our Indigenous communities across Canada and the United States. For years, I struggled with my mental health challenges, navigating through the complexities of trauma passed down through generations. The reality is stark: According to Hus and Segal, suicide rates among Indigenous youth between the ages of 15-24 are 5 to 6 times higher than their non-Indigenous counterparts [^1], and in my home province of Ontario, opioid overdoses continue to devastate our communities as shown by the data provided by the Algoma Public Health [^2].
@@ -51,10 +58,10 @@ The solution requires very specific and actionable changes:
 
 As the son and grandson of medical professionals working in our communities, I've witnessed the transformative power of culturally appropriate mental health support. But these success stories remain too rare. True reconciliation must include a complete transformation in how we approach Indigenous mental health services. Our wounds from colonization still run deep, but healing is possible with proper support and resources. Our communities deserve nothing less than a mental health system that honours our traditions, understands our trauma, and supports our healing journey.
 
-[^1]: Hus, Ying., & Segal, Oksana. (2024). Unravelling Suicide and Related Behaviours in Indigenous Youth and Young Adults in the Canadian Context. *Journal of Neuropsychiatric Disease and Treatment, 20*, 2073-2094.
+[^1]: Hus, Ying., & Segal, Oksana. (2024). Unravelling Suicide and Related Behaviours in Indigenous Youth and Young Adults in the Canadian Context. _Journal of Neuropsychiatric Disease and Treatment, 20_, 2073-2094.
 
 [^2]: "Opioid-Related Health Harms in Algoma: Local Data." Algoma Public Health. October 16, 2024.
 
 [^3]: Lou, B., M.A. (2020). MENTAL HEALTH CARE UTILIZATION OF INDIGENOUS PEOPLES IN CANADA. The Canadian Journal of Native Studies, 40(2), 75-99.
 
-[^4]: Boksa, P., PhD., Joober, Ridha,M.D., PhD., & Kirmayer, L. J., M.D. (2015). Mental wellness in Canada's aboriginal communities: Striving toward reconciliation. *Journal of Psychiatry & Neuroscience: JPN, 40*(6), 363-365.
+[^4]: Boksa, P., PhD., Joober, Ridha,M.D., PhD., & Kirmayer, L. J., M.D. (2015). Mental wellness in Canada's aboriginal communities: Striving toward reconciliation. _Journal of Psychiatry & Neuroscience: JPN, 40_(6), 363-365.

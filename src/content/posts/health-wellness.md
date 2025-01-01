@@ -5,7 +5,14 @@ description: "Sharing my health challenges, cultural realizations, and their pro
 image:
   url: "https://your-image-url.jpg" # Replace with your image URL
   alt: "An image representing personal transformation and new beginnings."
-tags: ["personal", "healing journey", "cultural heritage", "open source", "technology"]
+tags:
+  [
+    "personal",
+    "healing journey",
+    "cultural heritage",
+    "open source",
+    "technology",
+  ]
 ---
 
 ## Introduction

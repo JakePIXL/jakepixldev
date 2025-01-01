@@ -41,95 +41,95 @@ const totalPages = Math.ceil(projects.length / itemsPerPage);
     </ul>
 </div> -->
 <div>
-    <script>
-        let currentPage = 1;
-        const itemsPerPage = 2;
+  <script>
+    let currentPage = 1;
+    const itemsPerPage = 2;
 
-        function updateVisibility() {
-            const items = document.querySelectorAll(".project-item");
-            items.forEach((item, index) => {
-                const shouldShow =
-                    index >= (currentPage - 1) * itemsPerPage &&
-                    index < currentPage * itemsPerPage;
-                item.style.display = shouldShow ? "block" : "none";
-            });
+    function updateVisibility() {
+      const items = document.querySelectorAll(".project-item");
+      items.forEach((item, index) => {
+        const shouldShow =
+          index >= (currentPage - 1) * itemsPerPage &&
+          index < currentPage * itemsPerPage;
+        item.style.display = shouldShow ? "block" : "none";
+      });
 
-            const prevButton = document.getElementById("prevButton");
-            const nextButton = document.getElementById("nextButton");
-            const pageIndicator = document.getElementById("pageIndicator");
+      const prevButton = document.getElementById("prevButton");
+      const nextButton = document.getElementById("nextButton");
+      const pageIndicator = document.getElementById("pageIndicator");
 
-            if (prevButton && nextButton && pageIndicator) {
-                prevButton.disabled = currentPage === 1;
-                nextButton.disabled =
-                    currentPage === Math.ceil(items.length / itemsPerPage);
-                pageIndicator.textContent = `Page ${currentPage} of ${Math.ceil(items.length / itemsPerPage)}`;
-            }
+      if (prevButton && nextButton && pageIndicator) {
+        prevButton.disabled = currentPage === 1;
+        nextButton.disabled =
+          currentPage === Math.ceil(items.length / itemsPerPage);
+        pageIndicator.textContent = `Page ${currentPage} of ${Math.ceil(items.length / itemsPerPage)}`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const prevButton = document.getElementById("prevButton");
+      const nextButton = document.getElementById("nextButton");
+
+      prevButton?.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updateVisibility();
         }
+      });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const prevButton = document.getElementById("prevButton");
-            const nextButton = document.getElementById("nextButton");
-
-            prevButton?.addEventListener("click", () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    updateVisibility();
-                }
-            });
-
-            nextButton?.addEventListener("click", () => {
-                const items = document.querySelectorAll(".project-item");
-                if (currentPage < Math.ceil(items.length / itemsPerPage)) {
-                    currentPage++;
-                    updateVisibility();
-                }
-            });
-            updateVisibility();
-        });
-    </script>
-
-    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 p-0">
-        {
-            projects.map((project: any) => (
-                <li class="project-item flex-1 border border-slate-900 shadow-brutalism">
-                    <div class="flex flex-col gap-2">
-                        <div class="relative w-full">
-                            <Image
-                                src={project.data.cover}
-                                alt={project.data.coverAlt}
-                                loading="eager"
-                            />
-                            <a
-                                href={project.data.projectLink}
-                                target="_blank"
-                                class="absolute right-2 top-2 btn btn-md"
-                            >
-                                See More
-                                <Icon name="ic:baseline-open-in-new" />
-                            </a>
-                        </div>
-                        <div class="w-full p-2">
-                            <h3 class="text-lg font-semibold border-b border-slate-900">
-                                {project.data.title}
-                            </h3>
-                            <p>{project.data.description}</p>
-                        </div>
-                    </div>
-                </li>
-            ))
+      nextButton?.addEventListener("click", () => {
+        const items = document.querySelectorAll(".project-item");
+        if (currentPage < Math.ceil(items.length / itemsPerPage)) {
+          currentPage++;
+          updateVisibility();
         }
-    </ul>
+      });
+      updateVisibility();
+    });
+  </script>
 
-    {/* Pagination Controls */}
-    <div class="flex justify-between items-center gap-4 mt-6">
-        <button id="prevButton" class="btn btn-md disabled:cursor-not-allowed">
-            Previous
-        </button>
-        <span id="pageIndicator" class="label label-md">
-            Page 1 of {totalPages}
-        </span>
-        <button id="nextButton" class="btn btn-md disabled:cursor-not-allowed">
-            Next
-        </button>
-    </div>
+  <ul class="grid grid-cols-1 gap-6 p-0 md:grid-cols-2">
+    {
+      projects.map((project: any) => (
+        <li class="project-item flex-1 border border-slate-900 shadow-brutalism">
+          <div class="flex flex-col gap-2">
+            <div class="relative w-full">
+              <Image
+                src={project.data.cover}
+                alt={project.data.coverAlt}
+                loading="eager"
+              />
+              <a
+                href={project.data.projectLink}
+                target="_blank"
+                class="btn btn-md absolute right-2 top-2"
+              >
+                See More
+                <Icon name="ic:baseline-open-in-new" />
+              </a>
+            </div>
+            <div class="w-full p-2">
+              <h3 class="border-b border-slate-900 text-lg font-semibold">
+                {project.data.title}
+              </h3>
+              <p>{project.data.description}</p>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  {/* Pagination Controls */}
+  <div class="mt-6 flex items-center justify-between gap-4">
+    <button id="prevButton" class="btn btn-md disabled:cursor-not-allowed">
+      Previous
+    </button>
+    <span id="pageIndicator" class="label label-md">
+      Page 1 of {totalPages}
+    </span>
+    <button id="nextButton" class="btn btn-md disabled:cursor-not-allowed">
+      Next
+    </button>
+  </div>
 </div>
