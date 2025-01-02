@@ -32,7 +32,7 @@ const { headings, remarkPluginFrontmatter } = await post.render();
   articleDate={postDate}
 >
   <main class="h-full min-w-full flex-grow space-y-6">
-    <div class="mb-0 border-b border-slate-900 pb-4">
+    <div class="mb-0 border-b border-slate-900 pb-4 dark:border-slate-100">
       <h1 class="text-2xl font-semibold tracking-wide">
         {title}
       </h1>
@@ -71,7 +71,7 @@ const { headings, remarkPluginFrontmatter } = await post.render();
     </div>
 
     <div
-      class="prose-a:underline-blue-500 prose-a:visited:underline-blue-700 prose min-w-full marker:text-slate-900 prose-h2:border-b prose-h2:border-slate-900 prose-a:underline prose-ol:pl-12 prose-ul:pl-11 prose-img:border"
+      class="prose-a:underline-blue-500 prose-a:visited:underline-blue-700 prose min-w-full text-slate-900 marker:text-slate-900 prose-h2:border-b prose-h2:border-slate-900 prose-h2:text-slate-900 prose-h3:text-slate-900 prose-a:text-slate-900 prose-a:underline prose-strong:text-slate-900 prose-ol:pl-12 prose-ul:pl-11 prose-img:border dark:text-slate-100 dark:marker:text-slate-100 dark:prose-h2:border-slate-100 dark:prose-h2:text-slate-100 dark:prose-h3:text-slate-100 dark:prose-a:text-slate-100 dark:prose-strong:text-slate-100"
     >
       <slot />
     </div>
@@ -83,7 +83,6 @@ const { headings, remarkPluginFrontmatter } = await post.render();
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    max-width: 300px;
     margin-left: auto;
     gap: 0.5rem;
   }

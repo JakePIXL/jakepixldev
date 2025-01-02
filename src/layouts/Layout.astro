@@ -55,10 +55,10 @@ const fullTitle = `JakePIXL - ${title}`;
   </head>
   <body>
     <div
-      class="border-slate-900 shadow-brutalism md:max-w-4xl md:border lg:m-4 lg:mx-auto"
+      class="border-slate-900 shadow-brutalism md:max-w-4xl md:border lg:m-4 lg:mx-auto dark:border-slate-100 dark:shadow-light-brutalism"
     >
       <div
-        class="flex flex-row items-center justify-between border-slate-900 p-4 pb-2 md:border-b md:pb-4"
+        class="flex flex-row items-center justify-between border-slate-900 p-4 pb-2 md:border-b md:pb-4 dark:border-slate-100"
       >
         <a href="/" class="flex flex-row items-center justify-center gap-2">
           <div class="h-20 w-20">
@@ -128,7 +128,7 @@ const fullTitle = `JakePIXL - ${title}`;
       </div>
 
       <div
-        class="flex flex-row items-center justify-center gap-2 border-t border-slate-900 p-4"
+        class="flex flex-row items-center justify-center gap-2 border-t border-slate-900 p-4 dark:border-slate-100"
       >
         <span class="text-sm opacity-55"
           >&copy; {new Date().getFullYear()} JakePIXL. All Rights Reserved.</span
@@ -141,7 +141,6 @@ const fullTitle = `JakePIXL - ${title}`;
 <style>
   html,
   body {
-    @apply bg-slate-100 text-slate-900;
     font-family: "TX-02", monospace;
     margin: 0;
     width: 100%;

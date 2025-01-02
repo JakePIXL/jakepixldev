@@ -8,6 +8,8 @@ export default {
       boxShadow: {
         brutalism: "5px 5px 0px 0px rgba(0,0,0,.25)",
         "brutalism-btn": "3px 3px 0px 0px rgba(0,0,0,.25)",
+        "light-brutalism": "5px 5px 0px 0px rgba(255,255,255,.25)",
+        "light-brutalism-btn": "3px 3px 0px 0px rgba(255,255,255,.25)",
       },
       fontFamily: {
         monospace: ["TX-02", ...defaultTheme.fontFamily.mono],

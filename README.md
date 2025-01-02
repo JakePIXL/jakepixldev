@@ -31,7 +31,7 @@ The site will be available at http://localhost:4321
 - [Astro](https://astro.build) - Static site generator
 - [TailwindCSS](https://tailwindcss.com) - Styling
 - [Prettier](https://prettier.io) - Code formatting
-- Custom icons
+- [Astro Icons](https://www.astroicon.dev/) - Icon Pack Loading
 
 ## Fonts
 
@@ -58,7 +58,7 @@ pnpm preview
 
 ## Project Structure
 
-- `src/content/` - Blog posts and project data 
+- `src/content/` - Blog posts and project data
 - `src/components/` - Reusable Astro components
 - `src/layouts/` - Page layouts
 - `src/pages/` - Site pages and routing
