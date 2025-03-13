@@ -5,4 +5,5 @@ draft: false
 cover: "./chunkvault-banner.jpg"
 coverAlt: "ChunkVault Banner"
 projectLink: https://github.com/Valink-Solutions/teller
+datePublished: "2024-11-24"
 ---

@@ -4,5 +4,6 @@ description: "Rurite is an open source, cross-platform note-taking application b
 draft: true
 cover: "./rurite-banner.jpg"
 coverAlt: "Rurite Banner"
-projectLink: https://rurite.app""
+projectLink: "https://rurite.app"
+datePublished: "2025-06-01"
 ---

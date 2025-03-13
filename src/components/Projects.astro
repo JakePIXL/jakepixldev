@@ -3,6 +3,12 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 const { projects } = Astro.props;
+let sorted_projects = projects.sort(
+  (a, b) => new Date(b.data.datePublished) - new Date(a.data.datePublished),
+);
+let filtered_projects = sorted_projects.filter(
+  (sorted_project) => sorted_project.data.status === "published",
+);
 const itemsPerPage = 2;
 const totalPages = Math.ceil(projects.length / itemsPerPage);
 ---
@@ -91,7 +97,7 @@ const totalPages = Math.ceil(projects.length / itemsPerPage);
   <ul class="grid grid-cols-1 gap-6 p-0 md:grid-cols-2">
     {
       projects.map((project: any) => (
-        <li class="project-item flex-1 border border-slate-900 shadow-brutalism dark:border-slate-100 dark:shadow-light-brutalism">
+        <li class="project-item h-fit flex-1 border border-slate-900 shadow-brutalism dark:border-slate-100 dark:shadow-light-brutalism">
           <div class="flex flex-col gap-2">
             <div class="relative w-full">
               <Image

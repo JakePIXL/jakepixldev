@@ -38,6 +38,7 @@ const projectsCollection = defineCollection({
       cover: image(),
       coverAlt: z.string().optional(),
       projectLink: z.string().url(),
+      datePublished: z.string().transform((str) => new Date(str)),
     }),
 });
 

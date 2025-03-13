@@ -5,4 +5,5 @@ draft: false
 cover: "./CommandBlock_Banner.jpg"
 coverAlt: "CommandBlock Banner"
 projectLink: https://github.com/Valink-Solutions/CommandBlock
+datePublished: "2024-11-25"
 ---
