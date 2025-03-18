@@ -18,6 +18,11 @@ const postDate = formatDate(date);
         {remarkPluginFrontmatter.minutesRead}
       </span>
     </div>
+    {
+      post.data.isPaper && (
+        <span class="label label-paper mr-2">Research Paper</span>
+      )
+    }
     <a
       href={`/posts/${post.slug}`}
       class="link max-w-full overflow-hidden text-ellipsis whitespace-nowrap border-b border-slate-900 hover:text-blue-600"

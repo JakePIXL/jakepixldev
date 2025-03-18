@@ -10,6 +10,7 @@ tags:
     "canada",
     "social-justice",
   ]
+isPaper: true
 ---
 
 Being the grandson of a residential school survivor, I know firsthand how intergenerational trauma can haunt our Indigenous communities across Canada and the United States. For years, I struggled with my mental health challenges, navigating through the complexities of trauma passed down through generations. The reality is stark: According to Hus and Segal, suicide rates among Indigenous youth between the ages of 15-24 are 5 to 6 times higher than their non-Indigenous counterparts [^1], and in my home province of Ontario, opioid overdoses continue to devastate our communities as shown by the data provided by the Algoma Public Health [^2].

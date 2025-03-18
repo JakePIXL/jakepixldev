@@ -1,4 +1,8 @@
+# robots.txt
 User-agent: *
-Allow: /
+Disallow: /posts/
+Disallow: /projects/
+Disallow: /api/
 
+# Allow search engines to discover sitemap
 Sitemap: https://www.jakepixl.dev/sitemap-index.xml

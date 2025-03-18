@@ -19,12 +19,13 @@ const filterDrafts = (entries: any[]) => {
 const postsCollection = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string().max(100),
-    description: z.string().min(50).max(260),
+    title: z.string().max(200),
+    description: z.string().min(50).max(360),
     draft: z.boolean().optional(),
     publishDate: z.string().transform((str) => new Date(str)),
     tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
     ogImage: z.string().optional(),
+    isPaper: z.boolean().default(false),
   }),
 });
 
