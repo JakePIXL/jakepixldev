@@ -27,27 +27,65 @@ const imgUrl = new URL(`/open-graph/${slug}.png`, Astro.url).href;
 const { remarkPluginFrontmatter } = await post.render();
 ---
 
-<script>
+<script lang="ts" is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.querySelector(".prev-btn");
     const nextBtn = document.querySelector(".next-btn");
     const container = document.querySelector(".tag-container");
+    const wrapper = document.querySelector(".tag-container-wrapper");
     const items = document.querySelectorAll(".tag-item");
 
-    if (!prevBtn || !nextBtn || !container || items.length === 0) return;
+    if (!prevBtn || !nextBtn || !container || !wrapper || items.length === 0)
+      return;
 
     let position = 0;
-    const itemWidth = 80; // approximate width of an item + gap
-    const maxPosition = Math.max(0, items.length * itemWidth - 300);
+
+    // Get actual total width of container
+    const getContainerWidth = () => {
+      let totalWidth = 0;
+      items.forEach((item) => {
+        const itemRect = item.getBoundingClientRect();
+        totalWidth += itemRect.width + 8; // width + right margin (0.5rem)
+      });
+      return totalWidth;
+    };
+
+    // Calculate visible width dynamically based on wrapper width
+    const getVisibleWidth = () => wrapper.clientWidth;
+
+    const getMaxPosition = () => {
+      const containerWidth = getContainerWidth();
+      const visibleWidth = getVisibleWidth();
+      return Math.max(0, containerWidth - visibleWidth);
+    };
+
+    let maxPosition = getMaxPosition();
+
+    // Calculate average item width for navigation jumps
+    const getAvgItemWidth = () => {
+      if (items.length === 0) return 100;
+      return getContainerWidth() / items.length;
+    };
+
+    // Update on window resize
+    window.addEventListener("resize", () => {
+      maxPosition = getMaxPosition();
+      // Ensure position is still valid after resize
+      position = Math.min(position, maxPosition);
+      container.style.transform = `translateX(-${position}px)`;
+      updateButtonState();
+    });
 
     prevBtn.addEventListener("click", () => {
-      position = Math.max(position - itemWidth * 2, 0);
+      const avgItemWidth = getAvgItemWidth();
+      position = Math.max(position - avgItemWidth * 2, 0);
       container.style.transform = `translateX(-${position}px)`;
       updateButtonState();
     });
 
     nextBtn.addEventListener("click", () => {
-      position = Math.min(position + itemWidth * 2, maxPosition);
+      const avgItemWidth = getAvgItemWidth();
+      position = Math.min(position + avgItemWidth * 2, maxPosition);
       container.style.transform = `translateX(-${position}px)`;
       updateButtonState();
     });
@@ -89,20 +127,9 @@ const { remarkPluginFrontmatter } = await post.render();
           {remarkPluginFrontmatter.minutesRead}
         </span>
       </div>
-      <!-- <ul
-                class="grid grid-cols-3 max-w-[450px] gap-1 pb-4 md:gap-2 place-items-end"
-            >
-                {
-                    tags.map((tag: string) => (
-                        <li>
-                            <span class="label label-sm">{tag}</span>
-                        </li>
-                    ))
-                }
-            </ul> -->
-      <div class="tag-carousel">
+      <div class="tag-carousel justify-center md:justify-end">
         <button
-          class="btn btn-sm carousel-btn prev-btn"
+          class="btn btn-sm carousel-btn prev-btn shrink-0"
           aria-label="Previous tags"
         >
           <!-- Rotate because back icon is off center -->
@@ -112,16 +139,19 @@ const { remarkPluginFrontmatter } = await post.render();
             class="rotate-180"
           />
         </button>
-        <div class="tag-container-wrapper">
+        <div class="tag-container-wrapper min-w-0 flex-1">
           <ul class="tag-container">
             {
               tags.map((tag: string) => (
-                <li class="label label-sm tag-item">{tag}</li>
+                <li class="label label-sm tag-item whitespace-nowrap">{tag}</li>
               ))
             }
           </ul>
         </div>
-        <button class="btn btn-sm carousel-btn next-btn" aria-label="Next tags">
+        <button
+          class="btn btn-sm carousel-btn next-btn shrink-0"
+          aria-label="Next tags"
+        >
           <Icon name="material-symbols:arrow-forward-ios" size="1rem" />
         </button>
       </div>
@@ -140,19 +170,20 @@ const { remarkPluginFrontmatter } = await post.render();
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-left: auto;
+    width: 100%;
   }
 
   .tag-container-wrapper {
     position: relative;
     overflow: hidden;
-    width: 300px;
+    width: 100%;
+    max-width: 450px;
   }
 
   .tag-container {
     display: flex;
     transition: transform 0.3s ease;
     gap: 0.5rem;
-    width: 100%;
+    width: fit-content;
   }
 </style>
