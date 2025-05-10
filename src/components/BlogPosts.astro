@@ -1,11 +1,11 @@
 ---
 import BlogPost from "./BlogPost.astro";
 
-const { posts } = Astro.props;
+const { posts, withDesc = false } = Astro.props;
 ---
 
 <section>
   <ul class="flex list-none flex-col gap-4 p-0">
-    {posts.map((post: any) => <BlogPost post={post} />)}
+    {posts.map((post: any) => <BlogPost post={post} withDesc={withDesc} />)}
   </ul>
 </section>

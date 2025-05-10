@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+// Fetch all posts that aren't drafts
+const allPosts = await getCollection("posts");
+const publicPosts = allPosts.filter((post) => !post.data.draft);
+
+// Get all unique tags
+const allTags = [
+  ...new Set(publicPosts.flatMap((post) => post.data.tags || [])),
+].sort();
+
+// Get post count for each tag
+const tagCounts = allTags.reduce(
+  (acc, tag) => {
+    const count = publicPosts.filter((post) =>
+      post.data.tags?.includes(tag),
+    ).length;
+    acc[tag] = count;
+    return acc;
+  },
+  {} as Record<string, number>,
+);
+---
+
+<Layout title="All Tags">
+  <div class="px-4">
+    <h1
+      class="border-l-4 border-blue-500 pl-2 text-2xl font-semibold text-gray-800 dark:text-slate-100"
+    >
+      All Tags
+    </h1>
+
+    <section class="mt-6" aria-label="Tag list">
+      {
+        allTags.length === 0 ? (
+          <p class="text-center text-gray-600 dark:text-gray-400">
+            No tags found.
+          </p>
+        ) : (
+          <ul class="flex flex-wrap justify-center gap-4">
+            {allTags.map((tag) => (
+              <li>
+                <a
+                  href={`/tags/${tag}`}
+                  class="label label-sm w-fit transition-colors hover:bg-blue-200 dark:hover:bg-blue-800"
+                >
+                  {tag} <span class="text-xs">({tagCounts[tag]})</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+  </div>
+</Layout>

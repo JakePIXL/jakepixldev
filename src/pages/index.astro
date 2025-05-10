@@ -48,6 +48,6 @@ const allPostsByDate = sortByDate(publicPosts).slice(0, 10);
 
   <section class="flex flex-col gap-2">
     <h1 class="section-title">Blog Posts</h1>
-    <BlogPosts posts={allPostsByDate} />
+    <BlogPosts posts={allPostsByDate} withDesc={true} />
   </section>
 </Layout>

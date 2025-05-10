@@ -1,0 +1,81 @@
+---
+import type { Page, GetStaticPathsOptions } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { sortByDate } from "../../date";
+import Layout from "../../layouts/Layout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import Pagination from "../../components/Pagination.astro";
+import { filterByTag } from "../../content/config";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const allPosts = await getCollection("posts");
+  const publicPosts = allPosts.filter((post) => !post.data.draft);
+
+  // Get all unique tags
+  const uniqueTags = [
+    ...new Set(publicPosts.flatMap((post) => post.data.tags || [])),
+  ];
+
+  // For each tag, create paginated routes
+  return uniqueTags.flatMap((tag) => {
+    const filteredPosts = filterByTag(publicPosts, tag);
+    const sortedPosts = sortByDate(filteredPosts);
+
+    return paginate(sortedPosts, {
+      params: { tag },
+      pageSize: 10,
+      props: { tag },
+    });
+  });
+}
+
+interface Props {
+  page: Page<CollectionEntry<"posts">>;
+  tag: string;
+}
+
+const { page, tag } = Astro.props;
+
+const meta = {
+  title: `Posts tagged with "${tag}"`,
+  description: `All posts tagged with "${tag}"`,
+};
+
+const paginationProps = {
+  ...(page.url.prev && {
+    prevUrl: {
+      url: page.url.prev,
+      text: `← Previous Page`,
+    },
+  }),
+  ...(page.url.next && {
+    nextUrl: {
+      url: page.url.next,
+      text: `Next Page →`,
+    },
+  }),
+};
+---
+
+<Layout title={`Tag: ${tag}`}>
+  <div class="px-4">
+    <h1
+      class="border-l-4 border-blue-500 pl-2 text-2xl font-semibold text-gray-800 dark:text-slate-100"
+    >
+      Posts tagged with "{tag}"
+    </h1>
+    <section aria-label="Blog post list">
+      <ul class="flex flex-col text-left">
+        {
+          page.data.map((p) => (
+            <li class="mb-4 flex flex-col flex-wrap gap-x-2 sm:flex-row [&_q]:w-full">
+              <BlogPost post={p} withDesc={false} />
+            </li>
+          ))
+        }
+      </ul>
+      <Pagination {...paginationProps} />
+    </section>
+  </div>
+</Layout>

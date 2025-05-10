@@ -9,34 +9,41 @@ const datetime = date.toISOString();
 const postDate = formatDate(date);
 ---
 
-<li class="p-0">
-  <div class="flex flex-col items-center gap-1 md:flex-row">
-    <div class="flex w-full max-w-[250px] flex-row items-center gap-2.5">
-      <time datetime={datetime} class="w-fit whitespace-nowrap">{postDate}</time
-      >
-      <span class="whitespace-nowrap text-sm opacity-40">
-        {remarkPluginFrontmatter.minutesRead}
-      </span>
+<li
+  class="border-b border-black border-opacity-40 p-0 pb-2 dark:border-slate-50"
+>
+  <div class="flex flex-col items-center gap-2 md:flex-row">
+    <div class="flex flex-row gap-2">
+      <div class="flex w-[225px] flex-row items-center gap-2.5">
+        <time datetime={datetime} class="w-fit whitespace-nowrap"
+          >{postDate}</time
+        >
+        <span class="whitespace-nowrap text-sm opacity-40">
+          {remarkPluginFrontmatter.minutesRead}
+        </span>
+      </div>
+      {
+        post.data.isPaper && (
+          <span class="label label-paper">Research Paper</span>
+        )
+      }
     </div>
-    {
-      post.data.isPaper && (
-        <span class="label label-paper mr-2">Research Paper</span>
-      )
-    }
     <a
       href={`/posts/${post.slug}`}
-      class="link max-w-full overflow-hidden text-ellipsis whitespace-nowrap border-b border-slate-900 hover:text-blue-600"
+      class="link max-w-full overflow-hidden text-ellipsis whitespace-nowrap hover:text-blue-600"
     >
       <!-- prettier-ignore -->
       {post.data.title}
     </a>
   </div>
-  {
-    // prettier-ignore
-    withDesc && (
-			<q class="mt-1">
+  <div class="text-center md:text-left mt-1">
+      {
+        // prettier-ignore
+        withDesc && (
+			<q class="opacity-50">
 				{post.data.description.length <= 196 ? post.data.description : post.data.description.substring(0, 196) + "..."}
 			</q>
 		)
-  }
+      }
+  </div>
 </li>

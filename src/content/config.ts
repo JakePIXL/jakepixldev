@@ -7,12 +7,19 @@ function removeDupsAndLowerCase(array: string[]) {
   return Array.from(distinctItems);
 }
 
-const filterDrafts = (entries: any[]) => {
+export const filterDrafts = (entries: any[]) => {
   return entries.filter((entry) => {
     // If draft is true or if we're not in production, filter it out
     const isDraft = entry.data.draft === true;
     const isProduction = import.meta.env.PROD;
     return !isDraft || !isProduction;
+  });
+};
+
+export const filterByTag = (entries: any[], tag: string) => {
+  return entries.filter((entry) => {
+    const tags = entry.data.tags || [];
+    return tags.includes(tag);
   });
 };
 

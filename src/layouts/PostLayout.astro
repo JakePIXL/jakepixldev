@@ -143,7 +143,14 @@ const { remarkPluginFrontmatter } = await post.render();
           <ul class="tag-container">
             {
               tags.map((tag: string) => (
-                <li class="label label-sm tag-item whitespace-nowrap">{tag}</li>
+                <li class="tag-item whitespace-nowrap">
+                  <a
+                    href={`/tags/${tag}`}
+                    class="label label-sm transition-colors hover:bg-blue-200 dark:hover:bg-blue-800"
+                  >
+                    {tag}
+                  </a>
+                </li>
               ))
             }
           </ul>
