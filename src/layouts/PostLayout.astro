@@ -38,7 +38,7 @@ const { remarkPluginFrontmatter } = await post.render();
 
     let position = 0;
     const itemWidth = 80; // approximate width of an item + gap
-    const maxPosition = Math.max(0, items.length * itemWidth - 220);
+    const maxPosition = Math.max(0, items.length * itemWidth - 300);
 
     prevBtn.addEventListener("click", () => {
       position = Math.max(position - itemWidth * 2, 0);
