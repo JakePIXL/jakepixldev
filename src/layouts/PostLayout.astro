@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import { formatDate } from "../date";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -9,11 +10,12 @@ interface Props {
 
 const { post } = Astro.props;
 const {
-  data: { title, tags, description, publishDate } = {
+  data: { title, tags, description, publishDate, isPaper } = {
     title: "",
     tags: [],
     description: "",
     publishDate: "",
+    isPaper: false,
   },
   slug,
 } = post || {};
@@ -22,8 +24,45 @@ const date = new Date(publishDate);
 const datetime = date.toISOString();
 const postDate = formatDate(date);
 const imgUrl = new URL(`/open-graph/${slug}.png`, Astro.url).href;
-const { headings, remarkPluginFrontmatter } = await post.render();
+const { remarkPluginFrontmatter } = await post.render();
 ---
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+    const container = document.querySelector(".tag-container");
+    const items = document.querySelectorAll(".tag-item");
+
+    if (!prevBtn || !nextBtn || !container || items.length === 0) return;
+
+    let position = 0;
+    const itemWidth = 80; // approximate width of an item + gap
+    const maxPosition = Math.max(0, items.length * itemWidth - 220);
+
+    prevBtn.addEventListener("click", () => {
+      position = Math.max(position - itemWidth * 2, 0);
+      container.style.transform = `translateX(-${position}px)`;
+      updateButtonState();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      position = Math.min(position + itemWidth * 2, maxPosition);
+      container.style.transform = `translateX(-${position}px)`;
+      updateButtonState();
+    });
+
+    function updateButtonState() {
+      if (prevBtn && nextBtn) {
+        prevBtn.disabled = position === 0;
+        nextBtn.disabled = position >= maxPosition;
+      }
+    }
+
+    // Initial state
+    updateButtonState();
+  });
+</script>
 
 <Layout
   title={title}
@@ -61,17 +100,35 @@ const { headings, remarkPluginFrontmatter } = await post.render();
                     ))
                 }
             </ul> -->
-      <ul class="tag-container">
-        {
-          tags.map((tag: string) => (
-            <li class="label label-sm tag-item">{tag}</li>
-          ))
-        }
-      </ul>
+      <div class="tag-carousel">
+        <button
+          class="btn btn-sm carousel-btn prev-btn"
+          aria-label="Previous tags"
+        >
+          <!-- Rotate because back icon is off center -->
+          <Icon
+            name="material-symbols:arrow-forward-ios"
+            size="1rem"
+            class="rotate-180"
+          />
+        </button>
+        <div class="tag-container-wrapper">
+          <ul class="tag-container">
+            {
+              tags.map((tag: string) => (
+                <li class="label label-sm tag-item">{tag}</li>
+              ))
+            }
+          </ul>
+        </div>
+        <button class="btn btn-sm carousel-btn next-btn" aria-label="Next tags">
+          <Icon name="material-symbols:arrow-forward-ios" size="1rem" />
+        </button>
+      </div>
     </div>
 
     <div
-      class="prose-a:underline-blue-500 prose-a:visited:underline-blue-700 prose min-w-full text-slate-900 marker:text-slate-900 prose-h2:border-b prose-h2:border-slate-900 prose-h2:text-slate-900 prose-h3:text-slate-900 prose-a:text-slate-900 prose-a:underline prose-strong:text-slate-900 prose-ol:pl-12 prose-ul:pl-11 prose-img:border dark:text-slate-100 dark:marker:text-slate-100 dark:prose-h2:border-slate-100 dark:prose-h2:text-slate-100 dark:prose-h3:text-slate-100 dark:prose-a:text-slate-100 dark:prose-strong:text-slate-100"
+      class="prose-a:underline-blue-500 prose-a:visited:underline-blue-700 prose min-w-full text-slate-900 marker:text-slate-900 prose-h2:border-b prose-h2:border-slate-900 prose-h2:text-slate-900 prose-h3:text-slate-900 prose-h4:text-slate-900 prose-a:text-slate-900 prose-a:underline prose-strong:text-slate-900 prose-ol:pl-12 prose-ul:pl-11 prose-img:border dark:text-slate-100 dark:marker:text-slate-100 dark:prose-h2:border-slate-100 dark:prose-h2:text-slate-100 dark:prose-h3:text-slate-100 dark:prose-h4:text-slate-100 dark:prose-a:text-slate-100 dark:prose-strong:text-slate-100"
     >
       <slot />
     </div>
@@ -79,23 +136,23 @@ const { headings, remarkPluginFrontmatter } = await post.render();
 </Layout>
 
 <style>
+  .tag-carousel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+
+  .tag-container-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+  }
+
   .tag-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    margin-left: auto;
+    transition: transform 0.3s ease;
     gap: 0.5rem;
-  }
-
-  .tag-item:nth-child(-n + 3) {
-    order: 1;
-  }
-
-  .tag-item:nth-child(4) {
-    order: 2;
-  }
-
-  .tag-item:nth-child(5) {
-    order: 3;
+    width: 100%;
   }
 </style>

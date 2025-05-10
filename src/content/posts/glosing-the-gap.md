@@ -11,17 +11,18 @@ tags:
     "Residential Schools",
     "Colonialism",
     "Community Engagement",
-    "Technology"
+    "Technology",
   ]
 categories: ["Research", "Education", "Social Impact"]
 isPaper: true
+draft: true
 ---
 
 ## Abstract
 
 This research proposal examines the educational disparities among Aboriginal communities and the factors that contribute to a lack of resources. Although the research draws on data from District 91 of northern British Columbia communities, the overall scope of research covers Canada as a whole. It analyzes multiple factors contributing to the disparities seen in Aboriginal communities, as well as computer model development to identify disparities at an interpersonal level. The research includes the study of the lasting effects of residential schools, community initiatives, educational resources, and multiple other data points relating to lower graduation rates and higher dropout rates among Aboriginal students. Implications suggest new frameworks for incorporating cultural and community well-being in measuring academic success.
 
-*Keywords*: Aboriginal Education, Educational Disparities, Cultural Integration, Residential Schools, Colonialism
+_Keywords_: Aboriginal Education, Educational Disparities, Cultural Integration, Residential Schools, Colonialism
 
 ## Overview of Educational Disparities in Aboriginal Communities
 
@@ -85,10 +86,10 @@ The responsibility for change far extends just the responsibilities of Aborigina
 
 Angeconeb, G. (2012, October 26). Garnet's Journey: Full Circle [Video]. YouTube. https://www.youtube.com/watch?v=0pMCKAt6rOY
 
-Feir, D. L. (2016). The Intergenerational Effects of Residential Schools on Children's Educational Experiences in Ontario and Canada's Western Provinces. *International Indigenous Policy Journal, 7*(3) https://proxy.lssu.edu/login?url=https://www.proquest.com/scholarly-journals/intergenerational-effects-residential-schools-on/docview/1858128420/se-2
+Feir, D. L. (2016). The Intergenerational Effects of Residential Schools on Children's Educational Experiences in Ontario and Canada's Western Provinces. _International Indigenous Policy Journal, 7_(3) https://proxy.lssu.edu/login?url=https://www.proquest.com/scholarly-journals/intergenerational-effects-residential-schools-on/docview/1858128420/se-2
 
 Khan, S., Rathod, V., Ranjan, A., Una, A., & Pandya, N. (2024). Addressing Educational Disparities: Assessing the Gap for Indigenous Community. Proceedings of the 16th International Conference on Computer Supported Education - Volume 2: CSEDU, 453–460. https://doi.org/10.5220/0012253600003693
 
 Louie, D. W., & Prince, L. (2023). Achieving Equity in Graduation Rates and Other Indicators of Success for Indigenous Learners in Canada. Canadian Journal of Education, 46(1), 1-32. https://proxy.lssu.edu/login?url=https://www.proquest.com/scholarly-journals/achieving-equity-graduation-rates-other/docview/2792103738/se-2
 
-Waboose, V. G. (2016). *Re-Living the Residential School Experience: An Anishinabe Kwe's Examination of the Compensation Processes for Residential School Survivors* (Order No. 10110420). Available from ProQuest Central. (1797427439). https://proxy.lssu.edu/login?url=https://www.proquest.com/dissertations-theses/re-living-residential-school-experience/docview/1797427439/se-2
+Waboose, V. G. (2016). _Re-Living the Residential School Experience: An Anishinabe Kwe's Examination of the Compensation Processes for Residential School Survivors_ (Order No. 10110420). Available from ProQuest Central. (1797427439). https://proxy.lssu.edu/login?url=https://www.proquest.com/dissertations-theses/re-living-residential-school-experience/docview/1797427439/se-2
