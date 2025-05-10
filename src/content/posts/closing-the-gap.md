@@ -1,6 +1,6 @@
 ---
 title: "Closing the Gap: Addressing Educational Disparities in Aboriginal Communities Through Community Engagement and Technology"
-description: "This research proposal examines the educational disparities among Aboriginal communities and the factors that contribute to a lack of resources, analyzing multiple factors and proposing frameworks for incorporating cultural well-being in measuring academic success."
+description: "Analyzing educational disparities in Aboriginal communities, identifying resource challenges, and proposing culturally responsive frameworks for academic success."
 draft: false
 publishDate: "2025-04-25"
 tags:
